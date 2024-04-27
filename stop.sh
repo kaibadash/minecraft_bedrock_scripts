@@ -21,13 +21,6 @@ wait_for_server_shutdown() {
     sleep 30
 }
 
-create_backup() {
-    tar -czvf "$BACKUP_DIR/minecraft_backup_$DATE_FORMAT.tar.gz" -C "$SERVER_DIR/worlds" .
-}
-
-cleanup_old_backups() {
-    find $BACKUP_DIR -type f -name "*.tar.gz" -mtime +3 -exec rm {} \;
-}
 
 # サーバー停止コマンドをスクリーンに送信
 send_command_to_screen "say Server is shutting down for backup."
@@ -35,5 +28,3 @@ send_command_to_screen "save-all"
 send_command_to_screen "stop"
 
 wait_for_server_shutdown
-create_backup
-cleanup_old_backups

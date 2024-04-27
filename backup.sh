@@ -1,5 +1,13 @@
 #!/bin/bash
 
+create_backup() {
+    tar -czvf "$BACKUP_DIR/minecraft_backup_$DATE_FORMAT.tar.gz" -C "$SERVER_DIR/worlds" .
+}
+
+cleanup_old_backups() {
+    find $BACKUP_DIR -type f -name "*.tar.gz" -mtime +3 -exec rm {} \;
+}
+
 # 環境変数のチェック
 if [ -z "$MINECRAFT_BASE_DIR" ]; then
     echo "MINECRAFT_BASE_DIR is not set"
@@ -8,14 +16,9 @@ fi
 
 BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
 
-cd $MINECRAFT_BASE_DIR
-
-# stop.sh を実行してサーバーを停止し、バックアップ
 ./stop.sh
-
-tar -czvf "$BACKUP_DIR/minecraft_backup_$DATE_FORMAT.tar.gz" -C "$SERVER_DIR/worlds" .
-
-# start.sh を実行してサーバーを再開
+create_backup
+cleanup_old_backups
 ./start.sh
 
 # NOTE: screenセッションにアタッチする場合は以下を有効にする
