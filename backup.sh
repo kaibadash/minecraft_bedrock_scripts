@@ -1,6 +1,7 @@
 #!/bin/bash
 
 create_backup() {
+    DATE_FORMAT=$(date +%Y%m%d_%H%M%S)
     tar -czvf "$BACKUP_DIR/minecraft_backup_$DATE_FORMAT.tar.gz" -C "$SERVER_DIR/worlds" .
 }
 
