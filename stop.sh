@@ -7,9 +7,9 @@ if [ -z "$MINECRAFT_BASE_DIR" ]; then
 fi
 
 export LD_LIBRARY_PATH=.
-export SERVER_DIR=$MINECRAFT_BASE_DIR/minecraft_bedrock
-export BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
-export SCREEN_NAME="minecraft_server"
+SERVER_DIR=$MINECRAFT_BASE_DIR/minecraft_bedrock
+BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
+SCREEN_NAME="minecraft_server"
 
 send_command_to_screen() {
     screen -S "$SCREEN_NAME" -p 0 -X stuff "$1\r"

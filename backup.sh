@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SERVER_DIR=$MINECRAFT_BASE_DIR/minecraft_bedrock
+BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
+
 create_backup() {
     DATE_FORMAT=$(date +%Y%m%d_%H%M%S)
     tar -czvf "$BACKUP_DIR/minecraft_backup_$DATE_FORMAT.tar.gz" -C "$SERVER_DIR/worlds" .
@@ -14,8 +17,6 @@ if [ -z "$MINECRAFT_BASE_DIR" ]; then
     echo "MINECRAFT_BASE_DIR is not set"
     exit 1
 fi
-
-BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
 
 cd `dirname $0`
 ./stop.sh
