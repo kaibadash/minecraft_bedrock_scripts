@@ -16,6 +16,7 @@ fi
 
 BACKUP_DIR="$MINECRAFT_BASE_DIR/bak"
 
+cd `dirname $0`
 ./stop.sh
 create_backup
 cleanup_old_backups
