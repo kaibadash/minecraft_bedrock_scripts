@@ -16,7 +16,7 @@ send_command_to_screen() {
 }
 
 wait_for_server_shutdown() {
-    echo "Waiting for server to shut down..."
+    echo "Waiting for server to shutdown..."
     sleep 30
 }
 
