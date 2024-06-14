@@ -22,7 +22,6 @@ cd `dirname $0`
 ./stop.sh
 create_backup
 cleanup_old_backups
-./start.sh
 
 # NOTE: screenセッションにアタッチする場合は以下を有効にする
 # screen -r "$SCREEN_NAME"

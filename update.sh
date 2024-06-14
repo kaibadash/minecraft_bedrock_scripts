@@ -16,10 +16,13 @@ if [ ! -d $MINECRAFT_BASE_DIR/minecraft_bedrock ]; then
     exit 1
 fi
 
-cd $MINECRAFT_BASE_DIR
+SCRIPT_DIR="$MINECRAFT_BASE_DIR/minecraft_bedrock_scripts"
+cd $SCRIPT_DIR/
+./stop.sh
+./backup.sh
 
 # バージョン情報を保存するファイル
-version_file="version_info.txt"
+version_file="$MINECRAFT_BASE_DIR/version_info.txt"
 
 # テンポラリディレクトリの削除と作成
 tmp_dir=update_tmp
@@ -69,13 +72,9 @@ fi
 cd $tmp_dir
 unzip bedrock-server.zip
 rm *json *properties
-
-cd $MINECRAFT_BASE_DIR
-./restart_backup.sh
-cp -rf ./* ./minecraft_bedrock/
+cp -rf ./* $MINECRAFT_BASE_DIR/minecraft_bedrock/
 
 # 新しいバージョン情報をファイルに保存
-cd $MINECRAFT_BASE_DIR
 echo "$version" > "$version_file"
-
-echo "Update completed successfully."
+echo "Update completed successfully: $version"
+./start.sh
