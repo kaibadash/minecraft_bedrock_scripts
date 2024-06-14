@@ -19,8 +19,8 @@ fi
 SCRIPT_DIR="$MINECRAFT_BASE_DIR/minecraft_bedrock_scripts"
 BAK_DIR="$MINECRAFT_BASE_DIR/bak"
 cd $SCRIPT_DIR/
-./stop.sh
-./backup.sh
+$SCRIPT_DIR/stop.sh
+$SCRIPT_DIR/backup.sh
 
 # バージョン情報を保存するファイル
 version_file="$MINECRAFT_BASE_DIR/version_info.txt"
@@ -78,4 +78,4 @@ cp -rf ./* $MINECRAFT_BASE_DIR/minecraft_bedrock/
 # 新しいバージョン情報をファイルに保存
 echo "$version" > "$version_file"
 echo "Update completed successfully: $version"
-./start.sh
+$SCRIPT_DIR/start.sh
