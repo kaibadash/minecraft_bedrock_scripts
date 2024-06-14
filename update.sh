@@ -17,6 +17,7 @@ if [ ! -d $MINECRAFT_BASE_DIR/minecraft_bedrock ]; then
 fi
 
 SCRIPT_DIR="$MINECRAFT_BASE_DIR/minecraft_bedrock_scripts"
+BAK_DIR="$MINECRAFT_BASE_DIR/bak"
 cd $SCRIPT_DIR/
 ./stop.sh
 ./backup.sh
@@ -56,7 +57,7 @@ else
 fi
 
 # 最新の.tgzファイルを見つける
-latest_tgz=$(ls -t ./bak/*.tar.gz | head -1)
+latest_tgz=$(ls -t $BAK_DIR/*.tar.gz | head -1)
 
 # 最新の.tgzファイルをGoogle Cloud Storageにアップロード
 if [ -f "$latest_tgz" ]; then
