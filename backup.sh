@@ -19,7 +19,6 @@ if [ -z "$MINECRAFT_BASE_DIR" ]; then
 fi
 
 cd `dirname $0`
-./stop.sh
 create_backup
 cleanup_old_backups
 
