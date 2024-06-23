@@ -48,9 +48,9 @@ const server = http.createServer((req, res) => {
               body: new URLSearchParams({ inputText: inputText })
             });
             if (response.ok) {
-              alert("Submitted successfully!");
+              console.log("Submitted successfully!");
             } else {
-              alert("Failed to submit!");
+              alert("Failed to submit!", response.body);
             }
           });
         </script>
