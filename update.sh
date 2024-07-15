@@ -2,11 +2,13 @@
 
 # Env
 # export GCS_BACKUP_BUCKET=gs://you_backet/minecraft/
+# export GOOGLE_APPLICATION_CREDENTIALS="/home/kaibadash/.ssh/gcs_service_account.json"
 # export MINECRAFT_BASE_DIR=/home/you/
 if [ -z "$GCS_BACKUP_BUCKET" ]; then
     echo "GCS_BACKUP_BUCKET is not set"
     exit 1
 fi
+
 if [ -z "$MINECRAFT_BASE_DIR" ]; then
     echo "MINECRAFT_BASE_DIR is not set"
     exit 1

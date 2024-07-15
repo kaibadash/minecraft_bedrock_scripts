@@ -19,7 +19,7 @@ upload() {
     # 最新の.tgzファイルをGoogle Cloud Storageにアップロード
     if [ -f "$latest_tgz" ]; then
         filename=$(basename "$latest_tgz")
-        gcloud storage cp "$latest_tgz" "$GCS_BACKUP_BUCKET""$filename"
+        gsutil cp "$latest_tgz" "$GCS_BACKUP_BUCKET""$filename"
         echo "File uploaded successfully."
     else
         echo "No .tgz file found."
@@ -35,6 +35,10 @@ fi
 if [ -z "$GCS_BACKUP_BUCKET" ]; then
     echo "GCS_BACKUP_BUCKET is not set"
     exit 2
+fi
+if [ -z "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+    echo "GOOGLE_APPLICATION_CREDENTIALS is not set"
+    exit 3
 fi
 
 cd `dirname $0`
