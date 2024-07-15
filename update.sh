@@ -56,19 +56,6 @@ else
     exit 1
 fi
 
-# 最新の.tgzファイルを見つける
-latest_tgz=$(ls -t $BAK_DIR/*.tar.gz | head -1)
-
-# 最新の.tgzファイルをGoogle Cloud Storageにアップロード
-if [ -f "$latest_tgz" ]; then
-    filename=$(basename "$latest_tgz")
-    gcloud storage cp "$latest_tgz" "$GCS_BACKUP_BUCKET""$filename"
-    echo "File uploaded successfully."
-else
-    echo "No .tgz file found."
-    exit 2
-fi
-
 # ダウンロードしたzipファイルを指定ディレクトリに移動して処理
 cd $tmp_dir
 unzip bedrock-server.zip
