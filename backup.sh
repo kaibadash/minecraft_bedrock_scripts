@@ -15,7 +15,7 @@ cleanup_old_backups() {
 upload() {
     # 認証が必要?
     # gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-    
+
     # 最新の.tgzファイルを見つける
     latest_tgz=$(ls -t $BACKUP_DIR/*.tar.gz | head -1)
 
